@@ -1,0 +1,415 @@
+:root {
+    --bg-color: #9394a5;
+    --text-color: #333;
+    --header-bg: #484b6a;
+    --header-text: #fff;
+    --column-bg: #d2d3db;
+    --button-bg: #25274a;
+    --button-text: #fff;
+    --button-hover: #4f5474;
+    --clear-button-bg: #e74c3c;
+    --clear-button-hover: #c0392b;
+    --explain-button-bg: #25274a;
+    --explain-button-hover: #4f5474;
+    --input-border: #ddd;
+}
+
+.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #f4f4f4;
+    --header-bg: #091c32;
+    --header-text: #fff;
+    --column-bg: #2c2c2c;
+    --button-bg: #3c3c3c;
+    --button-text: #fff;
+    --button-hover: #000000;
+    --clear-button-bg: #e74c3c;
+    --clear-button-hover: #c0392b;
+    --explain-button-bg: #3c3c3c;
+    --explain-button-hover: #000000;
+    --input-border: #444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    position: relative;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+main {
+    padding: 1rem;
+}
+
+.container {
+    display: flex;
+    gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: calc(100vh - 120px);
+    padding: 10px;
+}
+
+.column {
+    flex: 1;
+    background-color: var(--column-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.selection-column {
+    flex: 0 0 250px;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    padding: 0.5rem;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    background-color: var(--column-bg);
+    color: var(--text-color);
+    resize: both;
+    overflow: auto;
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    font-size: 14px;
+    appearance: none;
+    background-color: var(--column-bg);
+    color: var(--text-color);
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 20px auto;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+#clear-button {
+    margin-top: 1rem;
+    background-color: var(--clear-button-bg);
+}
+#clear-button:hover {
+    background-color: var(--clear-button-hover);
+}
+
+#explain-button {
+    margin-top: 1rem;
+    background-color: var(--explain-button-bg);
+}
+#explain-button:hover {
+    background-color: var(--explain-button-hover);
+}
+
+#theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--header-text);
+    cursor: pointer;
+    padding: 8px;
+    width: auto;
+    z-index: 1;
+}
+
+#theme-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .column {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .selection-column {
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .column {
+        padding: 1rem;
+    }
+}
+
+/* TYPING EFFECT*/
+.typewriter h1 {
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    font-family: serif;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    max-width: fit-content;
+    animation: 
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+/* Center the h1 and contain its width */
+header .typewriter {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+}
+
+/* Theme Toggle Styles */
+.theme-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--column-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 8px;
+}
+
+.theme-menu.show {
+    display: block;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+}
+
+.theme-option:hover {
+    background-color: var(--button-hover);
+}
+
+.theme-option svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.theme-option span {
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .theme-menu {
+        right: 10px;
+        min-width: 130px;
+    }
+
+    #theme-toggle {
+        right: 10px;
+    }
+}
+
+/* Output column header styling */
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.output-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    background: var(--column-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    width: 32px;
+    height: 32px;
+}
+
+.icon-button:hover {
+    background: var(--button-hover);
+    border-color: var(--button-bg);
+}
+
+.icon-button svg {
+    color: var(--text-color);
+}
+
+/* Tooltip styling */
+.icon-button[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: var(--button-bg);
+    color: var(--button-text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: -30px;
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .output-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .output-actions {
+        align-self: flex-end;
+    }
+}
+
+/* Output column specific styling */
+.output-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.output-header {
+    margin-bottom: 10px;
+}
+
+#output-code {
+    flex-grow: 1;
+    margin: 0;
+}
+
+/* Add these styles for CodeMirror */
+.CodeMirror {
+    height: 100%;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 4px;
+}
+
+.column .CodeMirror {
+    height: calc(100% - 35px);
+}
+
+/* Dark mode support for CodeMirror */
+.dark-mode .CodeMirror {
+    border-color: var(--input-border);
+}
+
+.dark-mode .CodeMirror-gutters {
+    background-color: #1e1e1e;
+    border-right: 1px solid #444;
+}
+
+/* Adjust the container heights */
+.container {
+    height: calc(100vh - 120px);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-column, .output-column {
+    flex: 1;
+}
+
+
+
+  

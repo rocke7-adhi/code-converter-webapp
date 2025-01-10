@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Converter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.js"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="light-mode">
+    
+    <header class="typewriter">
+        <h1>Hello Programmer</h1>
+        <button id="theme-toggle" aria-label="Change theme">
+            <!-- Icon will be inserted by JavaScript -->
+        </button>
+    </header>
+    <main>
+        
+        <div class="container">
+            <div class="column input-column">
+                <h2>Input Code</h2>
+                <textarea id="input_code" name="input_code" placeholder="Type your code here..."></textarea>
+            </div>
+            <div class="column selection-column">
+                <form id="conversion-form">
+                    <h2>Settings</h2>
+                    <label for="target_language">Target Language</label>
+                    <select id="target_language" name="target_language">
+                        {% for language in languages %}
+                            <option value="{{ language }}">{{ language }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="selected_model">Model</label>
+                    <select id="selected_model" name="selected_model">
+                        {% for model in models %}
+                            <option value="{{ model }}">{{ model }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit">Convert Code</button>
+                    <button type="button" id="explain-button">Explain Code</button>
+                    <button type="button" id="clear-button">Clear</button>
+                    
+                </form>
+            </div>
+            <div class="column output-column">
+                <div class="output-header">
+                    <h2>Output</h2>
+                    <div class="output-actions">
+                        <button class="icon-button" id="copy-button" title="Copy to clipboard">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <button class="icon-button" id="download-button" title="Download code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                        <button class="icon-button" id="fullscreen-button" title="Toggle fullscreen">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <textarea id="output-code" name="output_code" placeholder="Output will appear here..."></textarea>
+            </div>
+        </div>
+    </main>
+
+    <!-- AJAX Script -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+</body>
+</html>
+
