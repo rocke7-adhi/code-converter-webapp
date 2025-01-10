@@ -1,15 +1,5 @@
-#python -m venv venv
-#venv\Scripts\activate
-#python --version
-# Core Framework  pip install Flask
 Flask==3.0.0
-# AI Integration pip install -U g4f[all]
 g4f==0.1.9.0
-# Development and Production Server pip install gunicorn
-gunicorn==21.2.0
-# Security pip install python-dotenv
+gunicorn==21.2.0 # Development and Production Server pip install gunicorn
 python-dotenv==1.0.0
-# HTTP and API pip install requests
 requests==2.31.0 
-
-#pip install -r requirements.txt
