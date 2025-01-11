@@ -410,6 +410,60 @@ header .typewriter {
     flex: 1;
 }
 
+.input-column {
+    position: relative;
+}
+
+.file-upload-area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+    z-index: 1;
+    
+
+}
+
+
+/* Adjust the CodeMirror container to account for the button */
+.input-column .CodeMirror {
+    height: calc(100% - 40px);  /* Adjust the height to account for header */
+    margin-top: 0;
+}
+
+
+/* Ensure the input column header doesn't overlap with the upload button */
+.input-column h2 {
+    margin-right: 40px;  /* Make space for the upload button */
+}
+
+/* Remove the old file-drop-zone styles and add these */
+#upload-button {
+    background: var(--column-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    width: 32px;
+    height: 32px;
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+
+#upload-button:hover {
+    background: var(--button-hover);
+    border-color: var(--button-bg);
+}
+
+#upload-button svg {
+    color: var(--text-color);
+}
+
 
 
   

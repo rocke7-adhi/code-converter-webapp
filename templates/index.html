@@ -29,6 +29,16 @@
         <div class="container">
             <div class="column input-column">
                 <h2>Input Code</h2>
+                <div class="file-upload-area">
+                    <input type="file" id="code-file-input" accept=".txt,.js,.py,.java,.cpp,.cs,.rb,.go,.swift,.php" style="display: none;">
+                    <button class="icon-button" id="upload-button" title="Upload file">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 8 12 3 17 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </button>
+                </div>
                 <textarea id="input_code" name="input_code" placeholder="Type your code here..."></textarea>
             </div>
             <div class="column selection-column">

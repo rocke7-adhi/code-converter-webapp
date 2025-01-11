@@ -253,6 +253,32 @@ $(document).ready(function() {
             document.exitFullscreen();
         }
     });
+
+    // File upload handling
+    const fileInput = $('#code-file-input');
+    const uploadButton = $('#upload-button');
+
+    // Handle click on upload button
+    uploadButton.on('click', function() {
+        fileInput.click();
+    });
+
+    // Handle file selection
+    fileInput.on('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            readFile(file);
+        }
+    });
+
+    // Function to read file contents
+    function readFile(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            inputEditor.setValue(e.target.result);
+        };
+        reader.readAsText(file);
+    }
 });
 
 
