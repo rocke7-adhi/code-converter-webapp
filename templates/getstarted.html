@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - AI Code Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script2.js') }}"></script>
+</head>
+<body class="light-mode">
+    <header class="typewriter">
+        <h1>Getting Started</h1>
+        <nav class="header-nav">
+            <button id="theme-toggle" aria-label="Change theme">
+                <!-- Icon will be inserted by JavaScript -->
+            </button>
+            <div class="theme-menu">
+                <div class="theme-option" data-theme="light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <span>Light</span>
+                </div>
+                <div class="theme-option" data-theme="dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <span>Dark</span>
+                </div>
+                <div class="theme-option" data-theme="system">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    <span>System</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="getstarted-main">
+        <div class="getstarted-container">
+            <section class="feature-section">
+                <h2>How to Use the AI Code Converter</h2>
+                
+                <div class="feature-card">
+                    <div class="feature-number">1</div>
+                    <div class="feature-content">
+                        <h3>Input Your Code</h3>
+                        <p>Either type your code directly into the editor or upload a file using the upload button.</p>
+                        <div class="feature-image">
+                            <img src="{{ url_for('static', filename='images/step1.png') }}" alt="Input Code Screenshot">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">2</div>
+                    <div class="feature-content">
+                        <h3>Select Settings</h3>
+                        <p>Choose your target programming language and the AI model you want to use for the conversion.</p>
+                        <div class="feature-image">
+                            <img src="{{ url_for('static', filename='images/step2.png') }}" alt="Settings Screenshot">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">3</div>
+                    <div class="feature-content">
+                        <h3>Convert or Explain</h3>
+                        <p>Click "Convert Code" to translate your code or "Explain Code" to get a detailed explanation.</p>
+                        <div class="feature-image">
+                            <img src="{{ url_for('static', filename='images/step3.png') }}" alt="Convert Screenshot">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">4</div>
+                    <div class="feature-content">
+                        <h3>Get Results</h3>
+                        <p>View your converted code or explanation in the output panel. You can copy, download, or view in fullscreen.</p>
+                        <div class="feature-image">
+                            <img src="{{ url_for('static', filename='images/step4.png') }}" alt="Output Screenshot">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="additional-info">
+                <h2>Additional Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h4>File Upload</h4>
+                        <p>Upload code files directly from your computer</p>
+                    </div>
+                    <div class="feature-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <h4>Copy to Clipboard</h4>
+                        <p>Easily copy converted code with one click</p>
+                    </div>
+                    <div class="feature-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                        </svg>
+                        <h4>Fullscreen Mode</h4>
+                        <p>View your code in fullscreen for better readability</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="cta-section">
+                <a href="{{ url_for('converter_page') }}" class="cta-button">Start Converting</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

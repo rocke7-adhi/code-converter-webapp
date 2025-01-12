@@ -161,10 +161,9 @@ button:hover {
 }
 
 #theme-toggle {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    right: 0;
+    transform: translateY(0);
     background: none;
     border: none;
     color: var(--header-text);
@@ -462,6 +461,27 @@ header .typewriter {
 
 #upload-button svg {
     color: var(--text-color);
+}
+
+.header-nav {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: var(--header-text);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    margin-right: 40px;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 

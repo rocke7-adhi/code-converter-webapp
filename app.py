@@ -8,14 +8,17 @@ asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())
 
 app = Flask(__name__, static_folder='static')
 
-
 converter = CodeConverter()
 explanation = CodeExplanation()
 
-
 @app.route('/')
 def index():
-    #return render_template('index.html')
+    # Changed to return getstarted page as default
+    return render_template('getstarted.html')
+
+@app.route('/converter')
+def converter_page():
+    # New route for the converter page
     return render_template('index.html', languages=PROGRAMMING_LANGUAGES, models=AVAILABLE_MODELS)
 
 # Code Converter
@@ -24,12 +27,10 @@ def convert():
     input_code = request.form['input_code']
     target_language = request.form['target_language']
     selected_model = request.form['selected_model']
-    # Perform the code conversion (you need to implement this logic in CodeConverter)
     converted_code = converter.convert_code(input_code, target_language, selected_model)
     return jsonify({
         'converted_code': converted_code
     })
-
 
 # Code Explanation
 @app.route('/explain', methods=['POST'])
@@ -40,8 +41,7 @@ def explain():
     explanation_text = explanation.explain_code(input_code, target_language, selected_model)
     return jsonify({
         'explanation': explanation_text
-        })
-
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
