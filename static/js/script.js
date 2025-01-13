@@ -122,11 +122,12 @@ $(document).ready(function() {
         outputEditor.setOption('mode', modeMap[language] || 'javascript');
     });
 
-    // Modify the form submission to work with CodeMirror
+    // Modify the form submission to include input_language
     $('#conversion-form').on('submit', function(e) {
         e.preventDefault();
         
         const input_code = inputEditor.getValue();
+        const input_language = $('#input_language').val();
         const target_language = $('#target_language').val();
         const selected_model = $('#selected_model').val();
         
@@ -137,6 +138,7 @@ $(document).ready(function() {
             method: 'POST',
             data: {
                 input_code: input_code,
+                input_language: input_language,
                 target_language: target_language,
                 selected_model: selected_model
             },
@@ -149,9 +151,10 @@ $(document).ready(function() {
         });
     });
 
-    // Modify the explain button to work with CodeMirror
+    // Modify the explain button to include input_language
     $('#explain-button').on('click', function() {
         const input_code = inputEditor.getValue();
+        const input_language = $('#input_language').val();
         const target_language = $('#target_language').val();
         const selected_model = $('#selected_model').val();
         
@@ -162,6 +165,7 @@ $(document).ready(function() {
             method: 'POST',
             data: {
                 input_code: input_code,
+                input_language: input_language,
                 target_language: target_language,
                 selected_model: selected_model
             },

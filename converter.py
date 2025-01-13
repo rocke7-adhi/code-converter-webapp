@@ -9,9 +9,10 @@ class CodeConverter:
         # Initialize the API client
         self.client = Client()
     
-    def convert_code(self, input_code: str, target_language: str, model: str) -> str:
+    def convert_code(self, input_code: str, input_language: str, target_language: str, model: str) -> str:
         """
-        Convert code from one language to another using the specified model
+         Convert code from input language to target language using the selected model.
+
         """
         # Validate input code is not empty
         if not input_code.strip():
@@ -28,7 +29,7 @@ class CodeConverter:
         try:
             # Create prompt for the AI model
             prompt = f"""
-            Convert the following code to {target_language}. 
+            Convert the following {input_language} code to {target_language}. 
             Only output the converted code, no explanations:
 
             ```
@@ -42,7 +43,7 @@ class CodeConverter:
                 messages=[
                     {"role": "user", "content": prompt},
                     #{"role": "system", "content": "You are a code converter AI, capable of converting code from one programming language to another, and you must display only the code."}
-                    {"role": "system", "content": "You are a highly intelligent assistant that specializes in converting code between different programming languages. Your role is to understand the input code provided by the user and translate it accurately into the specified target programming language. Maintain functionality and logic from the source code in the translated code. only with the translated code unless asked to provide explanations. If the user provides incomplete or unclear input, correct the code for clarification or additional details."}
+                    {"role": "system", "content": "You are a highly intelligent assistant that specializes in converting code between different programming languages. Your role is to understand the input code provided by the user and translate it accurately into the specified target programming language. Maintain functionality and logic from the source code in the translated code.  If the user provides incomplete or unclear input, correct the code. only display the code, no explanations."}
 
                 ],
                 temperature=0.2  # Lower temperature for more consistent outputs

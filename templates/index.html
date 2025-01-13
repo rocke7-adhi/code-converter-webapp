@@ -47,6 +47,15 @@
             <div class="column selection-column">
                 <form id="conversion-form">
                     <h2>Settings</h2>
+                    
+                    <label for="input_language">Input Language</label>
+                    <select id="input_language" name="input_language" required>
+                        <option value="" disabled selected>Select input language</option>
+                        {% for language in languages %}
+                            <option value="{{ language }}">{{ language }}</option>
+                        {% endfor %}
+                    </select>
+
                     <label for="target_language">Target Language</label>
                     <select id="target_language" name="target_language" required>
                         <option value="" disabled selected>Select target language</option>
