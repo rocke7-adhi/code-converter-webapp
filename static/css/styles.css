@@ -484,6 +484,11 @@ header .typewriter {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-
+select option[disabled] {
+    color: #666;
+}
+select:invalid {
+    color: #666;
+}
 
   
