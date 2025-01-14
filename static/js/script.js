@@ -279,10 +279,116 @@ $(document).ready(function() {
     function readFile(file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            inputEditor.setValue(e.target.result);
+            const content = e.target.result;
+            inputEditor.setValue(content);
+            
+            // Detect language from file name first
+            let detectedLang = detectLanguageFromFileName(file.name);
+            
+            // If no language detected from file name, try content
+            if (!detectedLang) {
+                detectedLang = detectLanguageFromContent(content);
+            }
+            
+            // Update the input language select if language was detected
+            if (detectedLang) {
+                $('#input_language').val(detectedLang);
+            }
         };
         reader.readAsText(file);
     }
+
+    // Function to detect language from file extension
+    function detectLanguageFromFileName(fileName) {
+        const extensionMap = {
+            'java': 'Java',
+            'js': 'JavaScript',
+            'py': 'Python',
+            'r': 'R',
+            'c': 'C',
+            'cs': 'Csharp',
+            'jl': 'Julia',
+            'go': 'Golang',
+            'pl': 'Perl',
+            'm': 'Matlab',
+            'kt': 'Kotlin',
+            'php': 'PHP',
+            'rs': 'Rust',
+            'rb': 'Ruby',
+            'lua': 'Lua',
+            'ts': 'TypeScript',
+            'sas': 'SAS',
+            'hx': 'Haxe',
+            'lisp': 'Lisp',
+            'f': 'Fortran',
+            'scala': 'Scala',
+            'as': 'ActionScript',
+            'asm': 'Assembly',
+            'clj': 'Clojure',
+            'coffee': 'CoffeeScript',
+            'dart': 'Dart',
+            'cbl': 'COBOL',
+            'groovy': 'Groovy',
+            'ex': 'Elixir',
+            'erl': 'Erlang',
+            'pas': 'Pascal',
+            'hs': 'Haskell',
+            'swift': 'Swift',
+            'rkt': 'Racket',
+            'ml': 'OCaml',
+            'scm': 'Scheme',
+            'cr': 'Crystal',
+            'elm': 'Elm',
+            'fs': 'Fsharp',
+            'tcl': 'Tcl',
+            'vb': 'VB.NET',
+            'vala': 'Vala',
+            'adb': 'Ada',
+            'objc': 'Objective_C'
+        };
+
+        const extension = fileName.split('.').pop().toLowerCase();
+        return extensionMap[extension] || null;
+    }
+
+    // Function to detect language from code content
+    function detectLanguageFromContent(code) {
+        // Common patterns to identify languages
+        const patterns = {
+            'Python': /(import\s+[a-zA-Z_][a-zA-Z0-9_]*|def\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(|print\s*\()/,
+            'JavaScript': /(const|let|var)\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=|function\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*\(/,
+            'Java': /(public|private|protected)\s+(class|interface|enum)|System\.out\.println/,
+            'Csharp': /(using\s+[a-zA-Z.]+;|namespace\s+[a-zA-Z.]+|Console\.WriteLine)/,
+            'PHP': /(<\?php|\$[a-zA-Z_][a-zA-Z0-9_]*|echo\s)/,
+            'Ruby': /(require|def\s+[a-zA-Z_][a-zA-Z0-9_]*|puts\s)/,
+            'Golang': /(package\s+[a-zA-Z_][a-zA-Z0-9_]*|func\s+[a-zA-Z_][a-zA-Z0-9_]*|fmt\.Println)/,
+            'R': /(library|function|print)/,
+            'Kotlin': /(fun\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(|val\s+[a-zA-Z_][a-zA-Z0-9_]*\s*=)/,
+            'TypeScript': /(const|let|var)\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=|function\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*\(|console\.log\(|:\s+[a-zA-Z_$][a-zA-Z0-9_$]*/,
+            'Pascal': /(program\s+[a-zA-Z0-9_]+;|begin\s+.*end\.)/,
+            'Haskell': /(module\s+[a-zA-Z0-9_]+|import\s+[a-zA-Z0-9_.]+)/,
+            'VB.NET': /(Imports\s+[a-zA-Z0-9_.]+|Sub\s+[a-zA-Z0-9_]+\()/,
+            'Swift': /(import\s+[a-zA-Z0-9_.]+|func\s+[a-zA-Z0-9_]+\s*\()/,
+        };
+
+        for (const [language, pattern] of Object.entries(patterns)) {
+            if (pattern.test(code)) {
+                return language;
+            }
+        }
+        return null;
+    }
+
+    // Add input editor change handler
+    inputEditor.on('change', function(cm, change) {
+        const content = cm.getValue();
+        if (content && !$('#input_language').val()) {
+            const detectedLang = detectLanguageFromContent(content);
+            if (detectedLang) {
+                $('#input_language').val(detectedLang);
+            }
+        }
+    });
 });
 
 
