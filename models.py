@@ -3,10 +3,10 @@ Contains available model configurations and constants
 """
 
 AVAILABLE_MODELS = [
+    "gpt-3.5-turbo",    # Fast and efficient for most conversions
     "gpt-4",            # Most accurate but slower
     "gpt-4o-mini",      # Lightweight version for simple conversions
     #"gpt-4-turbo",      # Latest GPT-4 model with improved performance
-    "gpt-3.5-turbo",    # Fast and efficient for most conversions
     
 ]
 
