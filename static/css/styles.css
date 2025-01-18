@@ -491,4 +491,24 @@ select:invalid {
     color: #666;
 }
 
+/* Add these styles for error handling */
+.output-column.error {
+    animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-message {
+    color: #e74c3c;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgba(231, 76, 60, 0.1);
+    margin-bottom: 10px;
+}
+
   

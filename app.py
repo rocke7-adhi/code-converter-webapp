@@ -38,9 +38,8 @@ def convert():
 def explain():
     input_code = request.form['input_code']
     input_language = request.form['input_language']
-    target_language = request.form['target_language']
     selected_model = request.form['selected_model']
-    explanation_text = explanation.explain_code(input_code, input_language, target_language, selected_model)
+    explanation_text = explanation.explain_code(input_code, input_language, selected_model)
     return jsonify({
         'explanation': explanation_text
     })

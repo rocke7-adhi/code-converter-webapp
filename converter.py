@@ -17,7 +17,9 @@ class CodeConverter:
         # Validate input code is not empty
         if not input_code.strip():
             return "Error: Please enter some code to convert."
-        
+        # Validate input language is selected
+        if not input_language:
+            return "Error: Please select a input programming language"
         # Validate target language is selected
         if not target_language:
             return "Error: Please select a target programming language."
@@ -29,7 +31,7 @@ class CodeConverter:
         try:
             # Create prompt for the AI model
             prompt = f"""
-            Convert the following {input_language} code to {target_language}. 
+            Convert this {input_language} code to {target_language}. 
             Only output the converted code, no explanations:
 
             ```

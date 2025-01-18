@@ -362,7 +362,6 @@ $(document).ready(function() {
             'PHP': /(<\?php|\$[a-zA-Z_][a-zA-Z0-9_]*|echo\s)/,
             'Ruby': /(require|def\s+[a-zA-Z_][a-zA-Z0-9_]*|puts\s)/,
             'Golang': /(package\s+[a-zA-Z_][a-zA-Z0-9_]*|func\s+[a-zA-Z_][a-zA-Z0-9_]*|fmt\.Println)/,
-            'R': /(library|function|print)/,
             'Kotlin': /(fun\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(|val\s+[a-zA-Z_][a-zA-Z0-9_]*\s*=)/,
             'TypeScript': /(const|let|var)\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=|function\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*\(|console\.log\(|:\s+[a-zA-Z_$][a-zA-Z0-9_$]*/,
             'Pascal': /(program\s+[a-zA-Z0-9_]+;|begin\s+.*end\.)/,
